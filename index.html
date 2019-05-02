@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Kredits</title>
+    <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js" charset="utf-8" type="text/javascript"></script>
+  </head>
+  <body>
+    <h1>Strart a new Kredits DAO</h1>
+
+    <button id="start">Create your Kredits Organization</button>
+
+    <p id="notice"></p>
+    <p>Please make sure you have metamask installed and that you're connected to the Rinkeby network</p>
+
+    <script charset="utf-8" type="text/javascript">
+      var ABI = [{"constant":true,"inputs":[],"name":"ens","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"fac","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"appId","type":"bytes32"}],"name":"latestVersionAppBase","outputs":[{"name":"base","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"appIds","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_fac","type":"address"},{"name":"_ens","type":"address"},{"name":"_appIds","type":"bytes32[4]"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"dao","type":"address"}],"name":"DeployInstance","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"dao","type":"address"},{"indexed":false,"name":"appProxy","type":"address"},{"indexed":false,"name":"appId","type":"bytes32"}],"name":"InstalledApp","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"appProxy","type":"address"},{"indexed":false,"name":"appId","type":"bytes32"}],"name":"InstalledApp","type":"event"},{"constant":false,"inputs":[],"name":"newInstance","outputs":[{"name":"dao","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+      var address = '0x76e069b47b79442657eaf0555a32c6b16fa1b8b4';
+
+      if (window.ethereum) {
+        window.ethereum.enable()
+          .then(function() {
+            var notice = document.getElementById('notice');
+            window.ethProvider = new ethers.providers.Web3Provider(window.ethereum);
+            window.signer = ethProvider.getSigner();
+            window.kreditsKit = new ethers.Contract(address, ABI, signer);
+
+            document.getElementById('start').addEventListener('click', function() {
+              kreditsKit.newInstance().then(transaction => {
+                console.log(transaction);
+                notice.innerHTML = `Transaction pushlished ${transaction.hash}. Waiting for transaction to be mined..`;
+                window.wait = transaction.wait(1).then(result => {
+                  console.log(result);
+                  var deployEvent = result.events.find(e => e.event === 'DeployInstance');
+                  var daoAddress = deployEvent.args.dao;
+                  notice.innerHTML = `Done. Your address is: ${daoAddress}`;
+                }).catch(console.log);
+                console.log(wait);
+              })
+            });
+          })
+          .catch(e => {
+            console.log(e);
+            alert('Ethereum access is required');
+          });
+      } else {
+
+      }
+    </script>
+
+  </body>
+</html>
