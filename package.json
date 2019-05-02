@@ -1,0 +1,24 @@
+{
+  "name": "kredits-deployer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "browserify": "^16.2.3",
+    "kredits-contracts": "^5.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bumi/kredits-deployer.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bumi/kredits-deployer/issues"
+  },
+  "homepage": "https://github.com/bumi/kredits-deployer#readme"
+}
