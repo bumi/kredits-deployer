@@ -9,6 +9,6 @@
 * copy index.html to ./dist
 
 
-Deployed on IPFS: [https://ipfs.io/ipfs/QmQnzJ1QW17DsBV4W8Q6B32ck3TkRfbkqNYsWXJpvitNPd/](https://ipfs.io/ipfs/QmQnzJ1QW17DsBV4W8Q6B32ck3TkRfbkqNYsWXJpvitNPd/)
+Deployed on IPFS: [https://ipfs.io/ipfs/QmPf4cYQZz3Ea2Wr6BHMgSEdK3TWdoKp6CJYqCb98e11GL/](https://ipfs.io/ipfs/QmPf4cYQZz3Ea2Wr6BHMgSEdK3TWdoKp6CJYqCb98e11GL/)
 
-or here on GH: [https://bumi.github.io/kredits-deployer/dist/](https://bumi.github.io/kredits-deployer/dist/)
+or here on GitHub: [https://bumi.github.io/kredits-deployer/dist/](https://bumi.github.io/kredits-deployer/dist/)
