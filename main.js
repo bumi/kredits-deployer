@@ -68,8 +68,8 @@ if (window.ethereum) {
         kreditsKit.newInstance().then(transaction => {
           document.getElementById('rinkeby-notice').style.display = "none";
           console.log('transaction', transaction);
-          notice.innerHTML = `Transaction pushlished ${transaction.hash}. Waiting for transaction to be mined... Please wait, this can take a moment.`;
-          transaction.wait(1).then(result => {
+          notice.innerHTML = `Transaction pushlished ${transaction.hash}. Waiting for transaction to be mined... Please wait, this can take a moment (1-2minutes).`;
+          transaction.wait(3).then(result => {
             var deployEvent = result.events.find(e => e.event === 'DeployInstance');
             window.daoAddress = deployEvent.args.dao;
 
